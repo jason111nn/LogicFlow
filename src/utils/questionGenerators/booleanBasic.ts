@@ -3,9 +3,9 @@ import { QuestionType } from '../../store/settingsStore'
 
 export function generateBooleanBasic(
   questionType: QuestionType,
-  seed?: number
+  _seed?: number
 ): Question {
-  const random = seed ? new SeededRandom(seed) : new SeededRandom()
+  const random = _seed ? new SeededRandom(_seed) : new SeededRandom()
   const types = [
     'or_identity',
     'and_identity',
@@ -86,7 +86,7 @@ export function generateBooleanBasic(
       const var1 = vars[random.nextInt(vars.length)]
       const var2 = vars[random.nextInt(vars.length)]
       if (var1 === var2) {
-        return generateBooleanBasic(questionType, seed ? seed + 1 : undefined)
+        return generateBooleanBasic(questionType, _seed ? _seed + 1 : undefined)
       }
       return {
         id: `bool-abs-${Date.now()}-${random.nextInt(1000)}`,
@@ -103,11 +103,12 @@ export function generateBooleanBasic(
       }
 
     case 'distributive':
-      const v1 = vars[random.nextInt(vars.length)]
-      const v2 = vars[random.nextInt(vars.length)]
-      const v3 = vars[random.nextInt(vars.length)]
+      const vars2 = ['A', 'B', 'C']
+      const v1 = vars2[random.nextInt(vars2.length)]
+      const v2 = vars2[random.nextInt(vars2.length)]
+      const v3 = vars2[random.nextInt(vars2.length)]
       if (v1 === v2 || v1 === v3 || v2 === v3) {
-        return generateBooleanBasic(questionType, seed ? seed + 1 : undefined)
+        return generateBooleanBasic(questionType, _seed ? _seed + 1 : undefined)
       }
       return {
         id: `bool-dist-${Date.now()}-${random.nextInt(1000)}`,
@@ -124,7 +125,7 @@ export function generateBooleanBasic(
       }
 
     default:
-      return generateBooleanBasic(questionType, seed ? seed + 1 : undefined)
+      return generateBooleanBasic(questionType, _seed ? _seed + 1 : undefined)
   }
 }
 

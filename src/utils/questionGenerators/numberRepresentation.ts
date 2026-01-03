@@ -36,7 +36,6 @@ function getBinaryCalculation(binary: string): string {
   const parts: string[] = []
   for (let i = 0; i < binary.length; i++) {
     const bit = binary[binary.length - 1 - i]
-    const power = Math.pow(2, i)
     parts.push(`${bit}×2⁰`)
   }
   return parts.join(' + ')

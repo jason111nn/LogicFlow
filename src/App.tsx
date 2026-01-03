@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react'
 import Sidebar from './components/Sidebar'
 import PracticeArea from './components/PracticeArea'
-import { useProgressStore } from './store/progressStore'
 import { useSettingsStore } from './store/settingsStore'
 
 function App() {

@@ -3,7 +3,7 @@ import { QuestionType } from '../../store/settingsStore'
 
 export function generateCombinationalSimplify(
   questionType: QuestionType,
-  seed?: number
+  _seed?: number
 ): Question {
   return {
     id: `comb-${Date.now()}`,

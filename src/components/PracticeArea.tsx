@@ -5,7 +5,7 @@ import QuestionDisplay from './QuestionDisplay'
 import StatisticsModal from './StatisticsModal'
 import ScreenshotButton from './ScreenshotButton'
 import { generateQuestion, generateQuestions } from '../utils/questionGenerators'
-import { Question, PracticeSession } from '../types/questions'
+import { PracticeSession } from '../types/questions'
 
 interface PracticeAreaProps {
   onMenuClick: () => void
@@ -13,7 +13,7 @@ interface PracticeAreaProps {
   onChapterSelect?: (chapterId: string) => void
 }
 
-export default function PracticeArea({ onMenuClick, initialChapterId, onChapterSelect }: PracticeAreaProps) {
+export default function PracticeArea({ onMenuClick, initialChapterId }: PracticeAreaProps) {
   const { questionType } = useSettingsStore()
   const { updateProgress } = useProgressStore()
   const [currentChapterId, setCurrentChapterId] = useState<string>(initialChapterId || 'boolean-basic')
@@ -50,7 +50,9 @@ export default function PracticeArea({ onMenuClick, initialChapterId, onChapterS
 
     const currentQuestion = session.questions[session.currentIndex]
     const isCorrect = Array.isArray(currentQuestion.correctAnswer)
-      ? JSON.stringify(answer.sort()) === JSON.stringify(currentQuestion.correctAnswer.sort())
+      ? Array.isArray(answer)
+        ? JSON.stringify([...answer].sort()) === JSON.stringify([...currentQuestion.correctAnswer].sort())
+        : false
       : answer === currentQuestion.correctAnswer
 
     const newAnswers = {

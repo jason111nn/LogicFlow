@@ -3,7 +3,7 @@ import { QuestionType } from '../../store/settingsStore'
 
 export function generateGateConversion(
   questionType: QuestionType,
-  seed?: number
+  _seed?: number
 ): Question {
   return {
     id: `gate-${Date.now()}`,

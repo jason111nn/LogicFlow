@@ -1,7 +1,5 @@
-import { useRef } from 'react'
 import html2canvas from 'html2canvas'
 import { useSettingsStore } from '../store/settingsStore'
-import { useProgressStore } from '../store/progressStore'
 
 interface ScreenshotButtonProps {
   onScreenshotStart?: () => void
@@ -10,7 +8,6 @@ interface ScreenshotButtonProps {
 
 export default function ScreenshotButton({ onScreenshotStart, onScreenshotEnd }: ScreenshotButtonProps) {
   const { darkMode } = useSettingsStore()
-  const { chapters: progress } = useProgressStore()
 
   const handleScreenshot = async () => {
     onScreenshotStart?.()

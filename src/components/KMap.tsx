@@ -34,7 +34,7 @@ export default function KMap({ rows, cols, values, onValuesChange, readOnly = fa
     setSelectionStart([row, col])
   }
 
-  const handleCellMouseEnter = (row: number, col: number) => {
+  const handleCellMouseEnter = (_row: number, _col: number) => {
     if (!isSelecting || !selectionStart || readOnly) return
     // 可以實作拖曳選擇多個格子的功能
   }

@@ -3,7 +3,7 @@ import { QuestionType } from '../../store/settingsStore'
 
 export function generateAlgebraAlgorithm(
   questionType: QuestionType,
-  seed?: number
+  _seed?: number
 ): Question {
   return {
     id: `alg-${Date.now()}`,
