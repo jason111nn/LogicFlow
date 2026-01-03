@@ -157,7 +157,18 @@ export default function PracticeArea({ onMenuClick, initialChapterId }: Practice
       {/* Main Content */}
       <div className="max-w-4xl mx-auto">
         <div className="mb-6 flex items-center justify-between">
-          <h1 className="text-2xl font-bold">練習模式</h1>
+          <div className="flex items-center gap-4">
+            <button
+              onClick={onMenuClick}
+              className="p-2 hover:bg-gray-200 dark:hover:bg-gray-700 rounded-lg transition-colors"
+              aria-label="打開菜單"
+            >
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <h1 className="text-2xl font-bold">練習模式</h1>
+          </div>
           <div className="flex gap-2">
             <ScreenshotButton
               onScreenshotStart={() => setIsScreenshotMode(true)}
